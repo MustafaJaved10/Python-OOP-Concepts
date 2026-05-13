@@ -31,10 +31,10 @@ PF_Python_OOP/
 │   └── abstraction_practice.py      ← Abstract classes (ABC)
 │
 ├── 06_projects/
-│   ├── student_grade_system.py      ← Full student grade calculator
-│   ├── playlist_system.py           ← Music playlist manager
-│   └── car_system.py                ← Car accelerate/brake system
-│
+│   ├── student_grade_system.py      # Grade calculator system
+│   ├── playlist_system.py           # Music playlist manager
+│   ├── car_system.py                # Car acceleration & braking system
+│   └── library_management_system.py # Full OOP Library System (Book/User management)
 └── README.md
 ```
 
