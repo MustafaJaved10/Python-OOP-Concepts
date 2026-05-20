@@ -51,4 +51,4 @@ print(f"Circle Area    : {c.area():.2f}")
 print(f"Rectangle Area : {r.area()}")
 print(f"Triangle Area  : {t.area()}")
 
-# shape = Shape()   ← ❌ Error! Cannot create object of abstract class
+# shape = Shape()    Error! Cannot create object of abstract class
