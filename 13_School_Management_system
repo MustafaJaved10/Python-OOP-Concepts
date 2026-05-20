@@ -1,0 +1,270 @@
+class Person:
+    def __init__(self,name,age,contact):  
+         self.__name=name
+         self.__age=0
+         self.__contact=""
+         self.set_age(age)   #use setters inside constructors to apply validation automatically.
+         self.set_contact(contact)
+    
+
+    def set_name(self,newname):
+        self.__name=newname
+    
+    def get_name(self):
+        return self.__name
+
+
+    def set_age(self,age):
+        if age <5 or age>100:    # local variable 
+            print(f"Invalid Age ")
+        
+        else:
+          self.__age=age
+    
+    def get_age(self):
+        return self.__age
+    
+    def set_contact(self,contact):
+        if len(contact) !=11:
+            print(f"Invalid Number")
+        
+        else:
+            self.__contact=contact
+    
+    def get_contact(self):
+        return self.__contact
+
+    def display_info(self):
+        print(f"Name {self.get_name()} Age is {self.get_age()} and contact is {self.get_contact()}")
+
+
+class Teacher(Person):
+    def __init__(self,name ,age,contact,Teacher_id,salary,subject):
+        super().__init__(name,age,contact)
+        self.__Teacher_id=Teacher_id
+        self.__salary=salary
+        self.__subject=subject
+        # self.set_Id()     No as no validation needed
+        # self.set_salary()
+        # self.set_subject()
+
+    def set_Id(self,new_Id):
+        self.__Teacher_id=new_Id
+    
+    def get_id(self):
+        return self.__Teacher_id
+    
+    def set_salary(self,new_salary):
+        self.__salary=new_salary
+    
+    def get_salary(self):
+        return self.__salary
+
+    def set_subject(self,new_Subject):
+        self.__subject=new_Subject
+
+    def get_subject(self):
+        return self.__subject
+    
+    def display_info(self):
+        print(f"Teacher Id {self.get_id()} Teacher Salary {self.get_salary()} Subject {self.get_subject()}")
+        print(f"Name {self.get_name()} Age is {self.get_age()} and contact is {self.get_contact()}")
+
+    def Describe(self):
+        print(f"I am Teacher ")
+    
+class Student(Person):
+    def __init__(self,name ,age,contact,Student_id,Grade,Marks):
+        super().__init__(name ,age,contact)
+        self.__Student_id=Student_id
+        self.__Grade=""    # if =Grade ,no validatio will chck 
+        self.__Marks=0
+        self.set_Grade(Grade)    # so here 
+        self.set_Marks(Marks)
+    
+    def set_SId(self,newId):
+        self.__Student_id=newId
+    
+    def get_SID(self):
+        return self.__Student_id
+    
+    def set_Grade(self,Grade):
+        if Grade not in ["A","B","C","D","F"]:
+            print("Invalid Grade")
+        else:
+            self.__Grade=Grade
+    
+    def getGrade(self):
+        return self.__Grade
+
+    def set_Marks(self,Marks):
+        if Marks < 0 or Marks>100:
+            print("INvalid")
+        else:  
+            self.__Marks=Marks
+
+    def get_Marks(self):
+        return self.__Marks
+    
+    def display_info(self):
+        print(f"Student Id is {self.get_SID()} Student Grade is {self.getGrade()} Student Marks are {self.get_Marks()}")
+        print(f"Name {self.get_name()} Age is {self.get_age()} and contact is {self.get_contact()}")
+    
+    def Describe(self):
+        print("I am Stdent")
+
+    
+class School:
+    def __init__(self,School_name):
+        self.__School_name=School_name
+        self.__StudentList=[]
+        self.__TeacherList=[]
+
+    def Add_teacher(self,name ,age,contact,Teacher_id,salary,subject):
+        Teac=Teacher(name ,age,contact,Teacher_id,salary,subject)
+        self.__TeacherList.append(Teac)
+    
+    def Add_Student(self,name,age,contact,Student_id,Grade,Marks):
+        Stu=Student(name,age,contact,Student_id,Grade,Marks)
+        self.__StudentList.append(Stu)
+    
+    def ShowTeachers(self):
+        for teacher in self.__TeacherList:
+            teacher.display_info()
+    
+    def ShowStudents(self):
+        for student in self.__StudentList:
+            student.display_info()
+    
+    def findStudent(self,Student_id):
+        for Stu in self.__StudentList :
+          if Stu.get_SID() ==Student_id:
+            return Stu
+        return None
+    
+    def findTeacher(self,Teacher_id):
+        for Teac in self.__TeacherList:
+            if Teac.get_id()==Teacher_id:
+                return Teac
+        return None
+
+school = School("UMT School")
+def get_valid_age():
+    age = input("Enter Age ")
+    if not age.isdigit():
+        print("Age should be digits only")
+        return None
+    if int(age) < 5 or int(age) > 100:
+        print("Age must be between 5 and 100")
+        return None
+    return int(age)
+
+
+while True:
+    print("\nSchool Management System")
+    print("1 Add Teacher")
+    print("2 Add Student")
+    print("3 Show All Teachers")
+    print("4 Show All Students")
+    print("5 Find Teacher")
+    print("6 Find Student")
+    print("7 Exit")
+
+    choice = input("Enter Choice ")
+
+    if not choice.isdigit():
+        print("Enter valid choice")
+        continue
+
+    if choice == "1":
+        name = input("Enter Teacher Name ")
+        if not name.replace(" ", "").isalpha():
+            print("Name should have letters only")
+            continue
+
+        age = get_valid_age()
+        if age is None:
+            continue
+
+        contact = input("Enter Contact ")
+        if not contact.isdigit() or len(contact) != 11:
+            print("Contact should be 11 digits")
+            continue
+
+        teacher_id = input("Enter Teacher ID ")
+        salary = input("Enter Salary ")
+        if not salary.isdigit():
+            print("Salary should be digits only")
+            continue
+
+        subject = input("Enter Subject ")
+        school.Add_teacher(name, age, contact, teacher_id, int(salary), subject)
+        print("Teacher Added Successfully")
+
+    elif choice == "2":
+        name = input("Enter Student Name ")
+        if not name.replace(" ", "").isalpha():
+            print("Name should have letters only")
+            continue
+
+        age = get_valid_age()
+        if age is None:
+            continue
+
+        contact = input("Enter Contact ")
+        if not contact.isdigit() or len(contact) != 11:
+            print("Contact should be 11 digits")
+            continue
+
+        student_id = input("Enter Student ID ")
+
+        grade = input("Enter Grade A B C D or F ")
+        if grade not in ["A", "B", "C", "D", "F"]:
+            print("Invalid Grade")
+            continue
+
+        marks = input("Enter Marks ")
+        if not marks.isdigit() or int(marks) > 100:
+            print("Marks should be 0 to 100")
+            continue
+
+        school.Add_Student(name, age, contact, student_id, grade, int(marks))
+        print("Student Added Successfully")
+
+    elif choice == "3":
+        school.ShowTeachers()
+
+    elif choice == "4":
+        school.ShowStudents()
+
+    elif choice == "5":
+        teacher_id = input("Enter Teacher ID ")
+        teacher = school.findTeacher(teacher_id)
+        if teacher:
+            teacher.display_info()
+        else:
+            print("Teacher Not Found")
+
+    elif choice == "6":
+        student_id = input("Enter Student ID ")
+        student = school.findStudent(student_id)
+        if student:
+            student.display_info()
+        else:
+            print("Student Not Found")
+
+    elif choice == "7":
+        print("Goodbye")
+        break
+                
+    else:
+        print("Invalid Choice Try Again")
+         
+        
+    
+
+        
+
+
+        
+        

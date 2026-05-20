@@ -63,11 +63,11 @@ class Vehicle:
 
 class FastCar(Vehicle):
     def move(self):
-        print(f"{self.brand} moves FAST 🚀")
+        print(f"{self.brand} moves FAST ")
 
 class SlowCar(Vehicle):
     def move(self):
-        print(f"{self.brand} moves slow 🐢")
+        print(f"{self.brand} moves slow ")
 
 car1 = FastCar("Leopard")
 car2 = SlowCar("Old Lion")
