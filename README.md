@@ -34,7 +34,9 @@ PF_Python_OOP/
 │   ├── student_grade_system.py      # Grade calculator system
 │   ├── playlist_system.py           # Music playlist manager
 │   ├── car_system.py                # Car acceleration & braking system
-│   └── library_management_system.py # Full OOP Library System (Book/User management)
+│   ├── library_management_system.py # Full OOP Library System (Book/User management)
+├   └── School_Management_system.py  # Full OOP School System(Inhertiance,polymorphism,encapsulation)
+   
 └── README.md
 ```
 
