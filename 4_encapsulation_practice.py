@@ -37,6 +37,6 @@ acc.deposit(1000)
 acc.withdraw(500)
 print("Balance:", acc.get_balance())
 
-print("Owner:", acc.owner)          # public ✅
-print("Branch:", acc._branch)       # protected ⚠️ (accessible but not recommended)
-# print(acc.__balance)              # private ❌ will cause error
+print("Owner:", acc.owner)          # public 
+print("Branch:", acc._branch)       # protected  (accessible but not recommended)
+# print(acc.__balance)              # private  will cause error
